@@ -1,3 +1,6 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -39,11 +42,19 @@ const App = () => {
       <nav>
         <h1>Recipes</h1>
       </nav>
+
       <section className="grid grid-cols-3 gap-8">
         {recipes.map((recipe) => (
           <Card key={recipe.id} className="flex flex-col justify-between">
             <CardHeader className="flex-row gap-4 items-center">
-              {/* avatar */}
+              <Avatar>
+                <AvatarImage
+                  src={`src/assets/images/${recipe.image}`}
+                  alt="recipe image"
+                  className="object-cover"
+                />
+                <AvatarFallback>{recipe.title.slice(0, 2)}</AvatarFallback>
+              </Avatar>
               <div>
                 <CardTitle>{recipe.title}</CardTitle>
                 <CardDescription>{recipe.time} mins to cook.</CardDescription>
@@ -53,8 +64,8 @@ const App = () => {
               <p>{recipe.description}</p>
             </CardContent>
             <CardFooter className="flex justify-between">
-              <button>View Recipe</button>
-              {recipe.vegan && <p>Vegan!</p>}
+              <Button>View Recipe</Button>
+              {recipe.vegan && <Badge variant="secondary">Vegan!</Badge>}
             </CardFooter>
           </Card>
         ))}
