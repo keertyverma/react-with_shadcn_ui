@@ -1,5 +1,11 @@
 const App = () => {
-  return <div>App</div>;
+  return (
+    <main>
+      <nav>
+        <h1>Recipes</h1>
+      </nav>
+    </main>
+  );
 };
 
 export default App;
